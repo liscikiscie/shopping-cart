@@ -4,10 +4,13 @@
 </template>
 
 <script>
+    import ProductList from './components/ProductList.vue';
 
     let App = {
         name: 'app',
-        components: {}
+        components: {
+            ProductList
+        }
     };
     export default App;
 </script>
