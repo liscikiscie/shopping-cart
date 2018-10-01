@@ -1,6 +1,8 @@
 <template>
     <div class="product">
-
+        <ul>
+            <li>{{productTitle}} - {{productPrice}}</li>
+        </ul>
     </div>
 </template>
 

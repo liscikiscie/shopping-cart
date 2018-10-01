@@ -1,5 +1,6 @@
 <template>
     <div class="product-list">
+        <h1>Product List</h1>
         <Product
                 v-for="product in products"
                 :key="product.id"
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-    import Product from './ProductList';
+    import Product from './Product';
     import shop from '../api/shop'
 
     let ProductList = {
