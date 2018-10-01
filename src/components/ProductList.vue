@@ -1,32 +1,28 @@
 <template>
     <div class="product-list">
         <h1>Product List</h1>
-        <Product
-                v-for="product in products"
-                :key="product.id"
-                :title="product.title"
-                :price="product.price"
-        />
+        <ul>
+            <li v-for="product in products">
+                {{product.title}} - {{product.price}}
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
-    import Product from './Product';
     import shop from '../api/shop'
+    import store from '../store/index'
 
     let ProductList = {
         name: 'ProductList',
-        components: {
-            Product
-        },
-        data() {
-            return {
-                products: []
+        computed: {
+            products() {
+                return store.getters.availableProducts
             }
         },
         created() {
             shop.getProducts(products => {
-                this.products = products
+                store.commit('setProducts', products);
             })
         }
     };
