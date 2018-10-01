@@ -10,7 +10,6 @@
 </template>
 
 <script>
-    import shop from '../api/shop'
     import store from '../store/index'
 
     let ProductList = {
@@ -21,9 +20,7 @@
             }
         },
         created() {
-            shop.getProducts(products => {
-                store.commit('setProducts', products);
-            })
+            store.dispatch('fetchProducts')
         }
     };
     export default ProductList;
