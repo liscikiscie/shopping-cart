@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <div class="product-list">
         <h1>Product List</h1>
@@ -8,7 +9,8 @@
         >
         <ul v-else>
             <li v-for="product in products">
-                {{product.title}} - {{product.price}}
+                {{product.title}} - {{product.price}} => {{product.inventory}}
+                <button @click="addProductToCart(product)">Add to cart</button>
             </li>
         </ul>
     </div>
@@ -21,6 +23,11 @@
         data() {
             return {
                 loading: false
+            }
+        },
+        methods: {
+            addProductToCart( product ) {
+                this.$store.dispatch('addProductToCart', product);
             }
         },
         computed: {
