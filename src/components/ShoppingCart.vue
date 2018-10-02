@@ -1,3 +1,4 @@
+
 <template>
     <div class="product">
         <h1>Shopping cart</h1>
@@ -10,10 +11,12 @@
 </template>
 
 <script>
-    let Product = {
+    let ShoppingCart = {
         name: 'ShoppingCart',
-        data() {
-            return {}
+        computed: {
+            products(){
+                return this.$store.getters.cartProducts
+            }
         }
     };
     export default ShoppingCart;
