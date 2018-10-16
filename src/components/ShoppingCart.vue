@@ -18,16 +18,18 @@
     let ShoppingCart = {
         name: 'ShoppingCart',
         computed: {
-            ...mapGetters({
+
+            ...mapGetters('cart', {
                 products: 'cartProducts',
                 total: 'cartTotal'
             }),
-            ...mapState({
-                checkoutStatus: state => state.cart.checkoutStatus
+
+            ...mapState('cart', {
+                checkoutStatus: state => state.checkoutStatus
             })
         },
         methods: {
-            ...mapActions(['checkout'])
+            ...mapActions('cart', [ 'checkout' ])
         }
     };
     export default ShoppingCart;

@@ -13,8 +13,7 @@
                 <button
                         :disabled="!productIsInStock(product)"
                         @click="addProductToCart(product)"
-                >
-                    Add to cart
+                >Add to cart
                 </button>
             </li>
         </ul>
@@ -34,20 +33,17 @@
         },
         methods: {
             ...mapActions({
-                fetchProducts: 'fetchProducts',
-                addProductToCart: 'addProductToCart'
+                fetchProducts: 'products/fetchProducts',
+                addProductToCart: 'cart/addProductToCart'
             })
         },
         computed: {
-            ...mapState({
-                products: state => state.products.items
+            ...mapState('products', {
+                products: state => state.items
             }),
             ...mapGetters({
-               productIsInStock: 'productIsInStock'
+                productIsInStock: 'products/productIsInStock'
             }),
-            productIsInStock() {
-                return this.$store.getters.productIsInStock;
-            }
         },
         created() {
             this.loading = true;
